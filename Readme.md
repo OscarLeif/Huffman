@@ -12,7 +12,7 @@ Para poder usar este programa necesiatars usar Visual Studio 2012 o Mayor. Es fa
 ### Installation
 
 * Es un projecto de visual studio no necesitas sino visual studio para compilar.
-* 
+
 ### Problemas 
  * Los caracteres especiales fallan, los trunca.
  * Posibles bugs que hagan que se rompa el programa.
