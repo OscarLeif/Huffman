@@ -64,6 +64,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Logic\Archivo.cs" />
     <Compile Include="Logic\HuffmanTree.cs" />
     <Compile Include="Logic\Node.cs" />
     <Compile Include="MainWindow.xaml.cs">

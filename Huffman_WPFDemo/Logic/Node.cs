@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Huffman_WPFDemo.Logic
 {
-    public class Node
+    [Serializable()]
+     public class Node
     {
         public char Symbol { get; set; }
         public int Frequency { get; set; }
@@ -59,13 +60,13 @@ namespace Huffman_WPFDemo.Logic
                 }
             }
         }
+     
 
-        public override string ToString()
+public override string ToString()
 {
  	 return Symbol + " " + Frequency + " ";
 }
         
-
         
     }
 }
