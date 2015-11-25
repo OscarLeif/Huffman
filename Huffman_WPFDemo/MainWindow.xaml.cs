@@ -152,8 +152,16 @@ namespace Huffman_WPFDemo
 
         private void ButtonDecode_Click(object sender, RoutedEventArgs e)
         {
+            if(encodedBitArray != null)
+            {
             String result = huffmanTree.Decode(encodedBitArray);
             TextBoxCompress.Text = result;
+            }
+            else if(encodedBitArray ==  null)
+            {
+                MessageBox.Show("No hay nada para decodificar");
+            }
+
         }
 
         private void listBox_MouseDoubleClick(object sender, MouseButtonEventArgs e)
@@ -201,30 +209,38 @@ namespace Huffman_WPFDemo
         private void serializarObjeto()
         {
             Archivo curArchivo = (Archivo)listBox.SelectedItem;
-
-            string result = System.IO.Path.ChangeExtension(curArchivo.Ruta, ".hf");
-
-
-            HuffmanTree saveFiles = new HuffmanTree();
-            saveFiles = huffmanTree;
-            if(encodedBitArray != null)
+            if(curArchivo != null)
             {
-            saveFiles.compressedText = encodedBitArray;
-            
+                string result = System.IO.Path.ChangeExtension(curArchivo.Ruta, ".hf");
 
-            Stream stream = File.Open(result, FileMode.Create);
-            BinaryFormatter bformatter = new BinaryFormatter();
 
-            Console.WriteLine("Writing Employee Information");
-            bformatter.Serialize(stream, saveFiles);
-            stream.Close();
-            cargarLista(actualPath);
+                HuffmanTree saveFiles = new HuffmanTree();
+                saveFiles = huffmanTree;
+                if (encodedBitArray != null)
+                {
+                    saveFiles.compressedText = encodedBitArray;
+
+
+                    Stream stream = File.Open(result, FileMode.Create);
+                    BinaryFormatter bformatter = new BinaryFormatter();
+
+                    Console.WriteLine("Writing Employee Information");
+                    bformatter.Serialize(stream, saveFiles);
+                    stream.Close();
+                    cargarLista(actualPath);
+                    MessageBox.Show("Archivo guardado en el directorio actual.");
+                }
+                else if (encodedBitArray == null)
+                {
+                    MessageBox.Show("Selecciona un archivo primero.");
+                }
+
             }
-            else if(encodedBitArray == null)
+            else if (curArchivo == null)
             {
                 MessageBox.Show("Selecciona un archivo primero.");
             }
-
+            
             
 
         }
